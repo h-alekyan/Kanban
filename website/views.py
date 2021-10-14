@@ -9,15 +9,7 @@ views = Blueprint('views', __name__)
 @views.route('/', methods=['GET', 'POST'])
 @login_required
 def home():
-    """
-        if len(note) < 1:
-            flash('Note is too short!', category='error')
-        else:
-            new_note = Note(data=note, user_id=current_user.id)
-            db.session.add(new_note)
-            db.session.commit()
-            flash('Note added!', category='success')
-    """
+ 
     if request.method == 'POST':
         #note = request.form.get('note')
         title = request.form.get('title')
@@ -42,3 +34,7 @@ def delete_note():
             db.session.commit()
 
     return jsonify({})
+
+@views.route('/kanban', methods=["GET", "POST"])
+def kanban():
+    return render_template("kanban.html", user=current_user)
