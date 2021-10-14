@@ -1,0 +1,39 @@
+.column {
+  flex: 33.33%;
+  height: 1000px;
+  padding: 10px;
+  margin: 0px;
+  text-align: left;
+}
+.container {
+   display: flex;
+   padding: 10px
+}	
+
+.taskbox{
+  padding: 15px;
+  margin: 10px;
+  background-color:rgb(41, 41, 41);
+  height: 70px;
+  border-radius: 5px;
+}
+
+.tasklist{
+  color:rgba(216, 191, 216, 0)
+}
+
+h1 {
+  color: rgb(41, 41, 41);
+  font-size: 50px;
+}
+h2 {
+  color: rgb(41, 41, 41);
+  font-family: sans-serif;
+}
+h3 {
+  color: white;
+}
+p {
+  color: white;  
+}
+

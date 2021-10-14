@@ -1,0 +1,91 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+<h1>Welcome, {{user.first_name}}</h1>
+<!-- <ul class="list-group list-group-flush" id="notes">
+  {% for note in user.notes %}
+  <li class="list-group-item">
+    {{ note.data }}
+    <button type="button" class="close" onClick="deleteNote({{ note.id }})">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </li>
+  {% endfor %}
+</ul> -->
+
+
+<form method="POST">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input
+      type="text"
+      class="form-control"
+      id="title"
+      name="title"
+      placeholder="Enter title"
+    />
+  </div>
+  <div class="form-group">
+    <label for="descr">Description</label>
+    <input
+      type="text"
+      class="form-control"
+      id="descr"
+      name="descr"
+      placeholder="Enter Description"
+    />
+  </div>
+  <div class="form-group">
+    <label for="stat">Status</label>
+    <select
+      class="form-control"
+      id="stat"
+      name="stat"
+    > 
+    <option value="todo">To Do</option>
+    <option value="doing">Doing</option>
+    <option value="done">Done</option>
+    </select>
+  </div>
+  <br />
+  <div align="center">
+    <button type="submit" class="btn btn-primary">Add Task</button>
+  </div>
+</form>
+
+
+<body rel="stylesheet" href="styles.css">
+<h1 style="text-align: center">Tasks</h1>
+        <div class="container">
+            <div class="column" style="background-color:rgb(238, 238, 238)">
+              <h2> TO DO </h2>
+              <div class="tasklist">
+                {% for task in user.tasks %}
+                  <div class="taskbox">
+                      <h3 style="padding-top: 2px; margin-top: 2px;">{{task.title}}</h3>
+                      <p>{{task.descr}}</p>
+                  </div>
+                {% endfor %}  
+              </div>
+            </div>
+            <div class="column" style = "background-color:rgb(214, 209, 130)">
+              <h2> DOING </h2>
+              <div class="tasklist">
+                <div class="taskbox">
+                    <h3 style="padding-top: 2px; margin-top: 2px;">Have Lunch</h3>
+                    <p>Have Lunch</p>
+                </div>
+              </div>  
+            </div>
+            <div class="column" style= "background-color: rgb(152, 199, 148)">
+              <h2> DONE </h2>
+              <div class="tasklist">
+                <div class="taskbox">
+                    <h3 style="padding-top: 2px; margin-top: 2px;">Breakfast</h3>
+                    <p>Have Breakfast</p>
+                </div>
+              </div>
+            </div>
+         </div>
+         </body>
+
+{% endblock %}
