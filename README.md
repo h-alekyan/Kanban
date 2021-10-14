@@ -1,4 +1,4 @@
-# Flask Web App Tutorial
+# Simple Kanban Board with Flask and HTML
 
 ## Setup & Installtion
 
@@ -21,3 +21,6 @@ python main.py
 ## Viewing The App
 
 Go to `http://127.0.0.1:5000`
+
+## Credits
+Authentication system and base HTML: https://github.com/techwithtim
