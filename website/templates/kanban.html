@@ -1,50 +1,50 @@
 {% extends "base.html" %} 
 
-
-
 {% block content %}
+
 <style>
     .column {
-  flex: 50%;
-  height: 1000px;
-  padding: 10px;
-  margin: 0px;
-  text-align: left;
-}
-.container {
-   display: flex;
+     flex: 33.33%;
+     height: 1000px;
+     padding: 10px;
+     margin: 0px;
+     text-align: left;
+   }
+   .container {
+      display: flex;
+   
+   }	
+   
+   .taskbox{
+     padding: 15px;
+     margin: 10px;
+     background-color:rgb(41, 41, 41);
+     height: 70px;
+     border-radius: 5px;
+   }
+   
+   .tasklist{
+     color:rgba(216, 191, 216, 0)
+   }
+   
+   h1 {
+     color: rgb(41, 41, 41);
+     font-size: 50px;
+   }
+   h2 {
+     color: rgb(41, 41, 41);
+     font-family: sans-serif;
+   }
+   h3 {
+     color: white;
+   }
+   p {
+     color: white;  
+   }
+   
+   
+   </style>
 
-}	
-
-.taskbox{
-  padding: 15px;
-  margin: 10px;
-  background-color:rgb(41, 41, 41);
-  height: 70px;
-  border-radius: 5px;
-}
-
-.tasklist{
-  color:rgba(216, 191, 216, 0)
-}
-
-h1 {
-  color: rgb(41, 41, 41);
-  font-size: 50px;
-}
-h2 {
-  color: rgb(41, 41, 41);
-  font-family: sans-serif;
-}
-h3 {
-  color: white;
-}
-p {
-  color: white;  
-}
-
-
-</style>
 
  <h1 style="text-align: center">Tasks</h1>
           <div class="container">
@@ -52,29 +52,42 @@ p {
                 <h2> TO DO </h2>
                 <div class="tasklist">
                   {% for task in user.tasks %}
+                  {% if task.stat == "todo" %}
                     <div class="taskbox">
                         <h3 style="padding-top: 2px; margin-top: 2px;">{{task.title}}</h3>
                         <p>{{task.descr}}</p>
+                        <p>{{task.stat}}</p>
                     </div>
+                  {% endif %}
                   {% endfor %}  
                 </div>
               </div>
               <div class="column" style = "background-color:rgb(214, 209, 130)">
                 <h2> DOING </h2>
                 <div class="tasklist">
-                  <div class="taskbox">
-                      <h3 style="padding-top: 2px; margin-top: 2px;">Have Lunch</h3>
-                      <p>Have Lunch</p>
-                  </div>
+                    {% for task in user.tasks %}
+                    {% if task.stat == "doing" %}
+                      <div class="taskbox">
+                          <h3 style="padding-top: 2px; margin-top: 2px;">{{task.title}}</h3>
+                          <p>{{task.descr}}</p>
+                          <p>{{task.stat}}</p>
+                      </div>
+                    {% endif %}
+                    {% endfor %}  
                 </div>  
               </div>
               <div class="column" style= "background-color: rgb(152, 199, 148)">
                 <h2> DONE </h2>
                 <div class="tasklist">
-                  <div class="taskbox">
-                      <h3 style="padding-top: 2px; margin-top: 2px;">Breakfast</h3>
-                      <p>Have Breakfast</p>
-                  </div>
+                    {% for task in user.tasks %}
+                    {% if task.stat == "done" %}
+                      <div class="taskbox">
+                          <h3 style="padding-top: 2px; margin-top: 2px;">{{task.title}}</h3>
+                          <p>{{task.descr}}</p>
+                          <p>{{task.stat}}</p>
+                      </div>
+                    {% endif %}
+                    {% endfor %}  
                 </div>
               </div>
            </div>
