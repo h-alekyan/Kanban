@@ -11,7 +11,6 @@ views = Blueprint('views', __name__)
 def home():
  
     if request.method == 'POST':
-        #note = request.form.get('note')
         title = request.form.get('title')
         descr = request.form.get('descr')
         stat = request.form.get('stat')
