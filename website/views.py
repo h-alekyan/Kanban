@@ -22,14 +22,14 @@ def home():
     return render_template("home.html", user=current_user)
 
 
-@views.route('/delete-note', methods=['POST'])
+@views.route('/delete-task', methods=['POST'])
 def delete_note():
-    note = json.loads(request.data)
-    noteId = note['noteId']
-    note = Note.query.get(noteId)
-    if note:
-        if note.user_id == current_user.id:
-            db.session.delete(note)
+    task = json.loads(request.data)
+    taskId = task['taskId']
+    task = Task.query.get(taskId)
+    if task:
+        if task.user_id == current_user.id:
+            db.session.delete(task)
             db.session.commit()
 
     return jsonify({})

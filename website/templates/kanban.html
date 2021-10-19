@@ -1,6 +1,24 @@
 {% extends "base.html" %} 
 
 {% block content %}
+<style>
+    h1 {
+  color: rgb(41, 41, 41);
+  font-size: 50px;
+}
+    h2 {
+    color: rgb(41, 41, 41);
+    font-family: sans-serif;
+    }
+    h3 {
+    color: white;
+    }
+    p {
+    color: white;  
+    }
+
+
+</style>
 
           <div class="container" style="
           display: flex;
@@ -26,6 +44,9 @@
                     border-radius: 5px;">
                         <h3 style="padding-top: 2px; margin-top: 2px;">{{task.title}}</h3>
                         <p>{{task.descr}}</p>
+                        <button type="button" class="close" onClick="deleteNote({{ task.id }})">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                   {% endif %}
                   {% endfor %}  
