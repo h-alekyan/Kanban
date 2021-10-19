@@ -72,6 +72,9 @@
                     background-color:rgb(41, 41, 41);
                     height: 100%;
                     border-radius: 5px;">
+                     <button style="color: white" type="button" class="close" onClick="deleteTask({{ task.id }})">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
                         <h3 style="padding-top: 2px; margin-top: 2px;">{{task.title}}</h3>
                         <p>{{task.descr}}</p>
                     </div>
@@ -98,6 +101,9 @@
                     background-color:rgb(41, 41, 41);
                     height: 100%;
                     border-radius: 5px;">
+                     <button style="color: white" type="button" class="close" onClick="deleteTask({{ task.id }})">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
                         <h3 style="padding-top: 2px; margin-top: 2px;">{{task.title}}</h3>
                         <p>{{task.descr}}</p>
                     </div>
