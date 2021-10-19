@@ -23,7 +23,8 @@ def home():
 
 
 @views.route('/delete-task', methods=['POST'])
-def delete_note():
+def delete_task():
+    print("entered delete")
     task = json.loads(request.data)
     taskId = task['taskId']
     task = Task.query.get(taskId)
