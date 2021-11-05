@@ -3,15 +3,16 @@ function deleteTask(taskId) {
     method: "POST",
     body: JSON.stringify({ taskId: taskId }),
   }).then((_res) => {
-    window.location.href = "/";
+    window.location.href = "/kanban";
   });
 }
 
 function moveTask(taskId, newStatus) {
-  fetch("/move-task", {
-    method: "POST",
-    body: JSON.stringify({ taskId: taskId, newStatus: newStatus }),
-  }).then((_res) => {
-    window.location.href = "/";
-  });
+console.log(newStatus)
+fetch("/move-task", {
+  method: "POST",
+  body: JSON.stringify({ taskId: taskId, newStatus: newStatus }),
+}).then((_res) => {
+  window.location.href = "/kanban";
+});
 }
