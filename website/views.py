@@ -24,7 +24,6 @@ def home():
 
 @views.route('/delete-task', methods=['POST'])
 def delete_task():
-    print("entered delete")
     task = json.loads(request.data)
     taskId = task['taskId']
     task = Task.query.get(taskId)
@@ -38,3 +37,18 @@ def delete_task():
 @views.route('/kanban', methods=["GET", "POST"])
 def kanban():
     return render_template("kanban.html", user=current_user)
+
+
+@views.route('/move-task', methods=['POST'])
+def move_task():
+    print("hello")
+    task = json.loads(request.data)
+    taskId = task['taskId']
+    newStatus = task['newStatus']
+    task = Task.query.get(taskId)
+    if task:
+        if task.user_id == current_user.id:
+            task.stat = newStatus
+            db.session.commit()
+
+    return jsonify({})

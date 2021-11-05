@@ -88,7 +88,19 @@
           window.location.href = "/kanban";
         });
       }
+      
+    function moveTask(taskId, newStatus) {
+      console.log(newStatus)
+      fetch("/move-task", {
+        method: "POST",
+        body: JSON.stringify({ taskId: taskId, newStatus: newStatus }),
+      }).then((_res) => {
+        window.location.href = "/kanban";
+      });
+    }
+
     </script>
+    
     <!--<script
     type="text/javascript"
     src="{{ url_for('static', filename='index.js') }}"
