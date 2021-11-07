@@ -1,4 +1,23 @@
-.column {
+.lcolumn {
+    background-color:rgb(238, 238, 238);
+    flex: 33.33%;
+    width: 100%;
+    height: 1000px;
+    padding: 10px;
+    margin: 0px;
+    text-align: left;
+}
+.mcolumn {
+  background-color:rgb(240, 245, 219);
+  flex: 33.33%;
+  width: 100%;
+  height: 1000px;
+  padding: 10px;
+  margin: 0px;
+  text-align: left;
+}
+.rcolumn {
+  background-color:rgb(217, 245, 217);
   flex: 33.33%;
   width: 100%;
   height: 1000px;
@@ -10,6 +29,10 @@
    display: flex;
    padding: 10px
 }	
+
+.close {
+  background-color: white;
+}
 
 .taskbox{
   padding: 15px;

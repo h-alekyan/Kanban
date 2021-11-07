@@ -7,11 +7,16 @@ db = SQLAlchemy()
 DB_NAME = "database.db"
 
 
-def create_app():
+def create_app(test_config=None):
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'hjshjhdjah kjshkjdhjs'
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+    
+    if test_config:
+        app.config.update(test_config)
+
     db.init_app(app)
+
 
     from .views import views
     from .auth import auth
@@ -19,7 +24,7 @@ def create_app():
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
 
-    from .models import User, Note, Task
+    from .models import User, Task
 
     create_database(app)
 
@@ -34,7 +39,7 @@ def create_app():
     return app
 
 
-def create_database(app):
-    if not path.exists('website/' + DB_NAME):
+def create_database(app, db_nm=DB_NAME):
+    if not path.exists('website/' + db_nm):
         db.create_all(app=app)
         print('Created Database!')

@@ -1,51 +1,24 @@
 {% extends "base.html" %} 
 
 {% block content %}
-<style>
-    h1 {
-  color: rgb(41, 41, 41);
-  font-size: 50px;
-}
-    h2 {
-    color: rgb(41, 41, 41);
-    font-family: sans-serif;
-    }
-    h3 {
-    color: white;
-    }
-    p {
-    color: white;  
-    }
 
-
-</style>
-
-          <div class="container" style="
-          display: flex;
-          padding: 10px">
-              <div class="column" style="
-              background-color:rgb(238, 238, 238);
-              flex: 33.33%;
-              width: 100%;
-              height: 1000px;
-              padding: 10px;
-              margin: 0px;
-              text-align: left;">
-                <h2 style="
-                color: rgb(41, 41, 41);
-                font-family: sans-serif;"> TO DO </h2>
+<head>
+  <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styl.css') }}"
+    />
+</head>
+          <div class="container">
+              <div class="lcolumn">
+                <h2> TO DO </h2>
                 <div class="tasklist" >
                   {% for task in user.tasks %}
                   {% if task.stat == "todo" %}
-                    <div class="taskbox" style="padding: 15px;
-                    margin: 10px;
-                    background-color:rgb(41, 41, 41);
-                    height: 100%;
-                    border-radius: 5px;">
-                    <button style="color: white" type="button" class="close" onClick="deleteTask({{ task.id }})">
+                    <div class="taskbox">
+                    <button type="button" class="close" onClick="deleteTask({{ task.id }})">
                       <span aria-hidden="true">&times;</span>
                   </button>
-                        <h3 style="padding-top: 2px; margin-top: 2px;">{{task.title}}</h3>
+                        <h3>{{task.title}}</h3>
                         <p>{{task.descr}}</p>
                         <button type="submit" class="btn btn-primary" onClick="moveTask({{task.id }}, 'doing')">Doing</button>
                         <button type="submit" class="btn btn-primary" onClick="moveTask({{task.id }}, 'done')">Done</button>
@@ -54,63 +27,37 @@
                   {% endfor %}  
                 </div>
               </div>
-              <div class="column" style="
-              background-color:rgb(214, 209, 130);
-              flex: 33.33%;
-              width: 100%;
-              height: 1000px;
-              padding: 10px;
-              margin: 0px;
-              text-align: left;">
-                <h2 style="
-                color: rgb(41, 41, 41);
-                font-family: sans-serif;"> DOING </h2>
+              <div class="mcolumn">
+                <h2> DOING </h2>
                 <div class="tasklist" >
                   {% for task in user.tasks %}
                   {% if task.stat == "doing" %}
-                    <div class="taskbox" style="padding: 15px;
-                    margin: 10px;
-                    background-color:rgb(41, 41, 41);
-                    height: 100%;
-                    border-radius: 5px;">
-                     <button style="color: white" type="button" class="close" onClick="deleteTask({{ task.id }})">
+                    <div class="taskbox" >
+                     <button type="button" class="close" onClick="deleteTask({{ task.id }})">
                       <span aria-hidden="true">&times;</span>
                   </button>
-                        <h3 style="padding-top: 2px; margin-top: 2px;">{{task.title}}</h3>
+                        <h3>{{task.title}}</h3>
                         <p>{{task.descr}}</p>
-                        <button type="submit" class="btn btn-primary" onClick="moveTask({{task.id }}, 'todo')">Doing</button>
+                        <button type="submit" class="btn btn-primary" onClick="moveTask({{task.id }}, 'todo')">To Do</button>
                         <button type="submit" class="btn btn-primary" onClick="moveTask({{task.id }}, 'done')">Done</button>
                     </div>
                   {% endif %}
                   {% endfor %}  
                 </div>
               </div>
-              <div class="column" style="
-              background-color:rgb(152, 199, 148);
-              flex: 33.33%;
-              width: 100%;
-              height: 1000px;
-              padding: 10px;
-              margin: 0px;
-              text-align: left;">
-                <h2 style="
-                color: rgb(41, 41, 41);
-                font-family: sans-serif;"> DONE </h2>
+              <div class="rcolumn">
+                <h2> DONE </h2>
                 <div class="tasklist" >
                   {% for task in user.tasks %}
                   {% if task.stat == "done" %}
-                    <div class="taskbox" style="padding: 15px;
-                    margin: 10px;
-                    background-color:rgb(41, 41, 41);
-                    height: 100%;
-                    border-radius: 5px;">
-                     <button style="color: white" type="button" class="close" onClick="deleteTask({{ task.id }})">
+                    <div class="taskbox">
+                     <button  type="button" class="close" onClick="deleteTask({{ task.id }})">
                       <span aria-hidden="true">&times;</span>
                   </button>
-                        <h3 style="padding-top: 2px; margin-top: 2px;">{{task.title}}</h3>
+                        <h3>{{task.title}}</h3>
                         <p>{{task.descr}}</p>
                         <button type="submit" class="btn btn-primary" onClick="moveTask({{task.id }}, 'todo')">Todo</button>
-                        <button type="submit" class="btn btn-primary" onClick="moveTask({{task.id }}, 'done')">Doing</button>
+                        <button type="submit" class="btn btn-primary" onClick="moveTask({{task.id }}, 'doing')">Doing</button>
                     </div>
                   {% endif %}
                   {% endfor %}  

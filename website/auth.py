@@ -8,12 +8,18 @@ from flask_login import login_user, login_required, logout_user, current_user
 auth = Blueprint('auth', __name__)
 
 
+
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
+    
+    """Accepting login credentials, checking them and logging the user in"""
+    
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
-
+        
+        #Find the user in the database, and check if the credentials match
+        
         user = User.query.filter_by(email=email).first()
         if user:
             if check_password_hash(user.password, password):
@@ -32,12 +38,24 @@ def login():
 @auth.route('/logout')
 @login_required
 def logout():
+
+    """Loging the user out"""
+
+    flash('Logged out successfully!', category='success')
     logout_user()
     return redirect(url_for('auth.login'))
 
 
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
+
+    """
+    
+    Taking signup credentials, checking if the meet the requirements and creating a new row in the User table.
+    If signed up sucessfully, redirects to home page with success message.
+    
+    """
+
     if request.method == 'POST':
         email = request.form.get('email')
         first_name = request.form.get('firstName')
