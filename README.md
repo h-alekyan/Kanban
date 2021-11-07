@@ -31,5 +31,14 @@ python main.py
 
 Go to `http://127.0.0.1:5000`
 
+## Testing
+
+```bash
+cd Kanban
+pytest
+```
+
+
+
 ## Credits
 Authentication system and base HTML: https://github.com/techwithtim
