@@ -12,6 +12,15 @@ git clone <repo-url>
 pip install -r requirements.txt
 ```
 
+Using a virtual environment
+
+```bash
+cd Kanban
+python3 -m venv venv
+venv\Scripts\activate.bat
+pip3 install -r requirements.txt
+```
+
 ## Running The App
 
 ```bash
